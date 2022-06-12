@@ -1,0 +1,3 @@
+jwt:
+  secret: "lotus"
+  expiration_time: 86400
