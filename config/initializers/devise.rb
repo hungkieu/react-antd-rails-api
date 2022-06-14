@@ -14,9 +14,13 @@ Devise.setup do |config|
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
   config.reset_password_within = 6.hours
   config.sign_out_via = :delete
+  config.navigational_formats = []
 
   config.jwt do |jwt|
     jwt.secret = Settings.jwt.secret
     jwt.expiration_time = Settings.jwt.expiration_time
+    jwt.dispatch_requests = [
+      ['POST', %r{^/api/v1/users/sign_in$}]
+    ]
   end
 end
